@@ -29,7 +29,11 @@ from sklearn.metrics import matthews_corrcoef
 from sklearn.metrics import cohen_kappa_score
 from sklearn.metrics import balanced_accuracy_score
 
-
+def combine_csv_file(url,n):
+    temp = pd.DataFrame()
+    for i in range(n):
+        temp = pd.concat([temp,pd.read_csv(url + str(i)+'.csv',index_col=0)],axis=0)
+    return temp
 
 class data_profiling:
     def __init__(self,*args):
